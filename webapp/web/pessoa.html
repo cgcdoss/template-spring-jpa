@@ -1,0 +1,189 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" id="cancelar">&times;</button>
+          <h4 class="modal-title">Pessoa</h4>
+        </div>
+        <div class="modal-body">
+        <ul class="nav nav-tabs" id="tabContent">
+        	<li class="nav-item active dadosbasicos"><a data-toggle="tab" href="#dadosbasicos">Dados Básicos</a></li>
+        	<li class="nav-item endereco"><a data-toggle="tab" href="#endereco">Endereço</a></li>
+        </ul>
+        <div class="tab-content">
+			<br>
+	        <div class="tab-pane active" id="dadosbasicos">
+	          <div class="row">
+	          	<div class="col-md-2 text-right">
+					<label class="control-label required"><i class="fa fa-user"></i> Nome</label>
+	          	</div>
+	          	<div class="col-md-8">
+	          		<input type="text" class="form-control" id="nomemodal" placeholder="Nome" required>
+	          	</div>
+	          	<div class="col-md-2">
+	          		<input readonly="readonly" id="id" class="form-control" placeholder="Id" tabIndex="-1">
+	          	</div>
+	          </div>
+	          <br>
+	          <div class="row">
+	          	<div class="col-md-2 text-right">
+	          		<label class="control-label required"><i class="fa fa-envelope"></i> Email</label>
+	          	</div>
+	          	<div class="col-md-8">
+	          		<input type="email" class="form-control" id="emailmodal" aria-describedby="emailHelp" placeholder="seuemail@dominio.com" required>
+	          	</div>
+	          </div>
+	          </div>
+	          <div id="endereco" class="tab-pane">
+	          	<div class="row text-right">
+	          		<div class="col-md-2">
+	          			<label class="control-label required">CEP</label>
+	          		</div>
+	          		<div class="col-md-4">
+	          			<input id="cep" class="form-control">
+	          		</div>
+	          		<div class="col-md-1">
+	          			<label class="control-label">UF</label>
+	          		</div>
+	          		<div class="col-md-2">
+	          			<select id="uf" class="form-control"></select>
+	          		</div>
+	          	</div>
+	          	<br>
+	          	<div class="row text-right">
+	          		<div class="col-md-2">
+	          			<label class="control-label required">Cidade</label>
+	          		</div>
+	          		<div class="col-md-8">
+	          			<input id="cidade" class="form-control" placeholder="Ex.: Belém">
+	          		</div>
+	          	</div>
+	          	<br>
+	          	<div class="row text-right">
+	          		<div class="col-md-2">
+	          			<label class="control-label required">Bairro</label>
+	          		</div>
+	          		<div class="col-md-8">
+	          			<input id="bairro" class="form-control" placeholder="Ex.: Fátima">
+	          		</div>
+	          	</div>
+	          	<br>
+	          	<div class="row text-right">
+	          		<div class="col-md-2">
+	          			<label class="control-label required">Rua</label>
+	          		</div>
+	          		<div class="col-md-6">
+	          			<input id="rua" class="form-control" placeholder="Ex.: Nazaré">
+	          		</div>
+	          		<div class="col-md-1">
+	          			<label class="control-label">Nº</label>
+	          		</div>
+	          		<div class="col-md-3">
+	          			<input id="numero" class="form-control" placeholder="Ex.: 100">
+	          		</div>
+	          	</div>
+	          </div>
+          </div>
+          <div id="infoexclusao">
+	          <br>
+	          <div class="row text-right">
+	          	<div class="col-md-12 text-right">
+	          		<label>Deseja realmente excluir?</label>
+	          	</div>
+	          </div>
+	          <div class="row text-right">
+	          	<div class="col-md-12 text-right">
+	          		<small class="form-text text-muted">Essa ação não poderá ser desfeita.</small>
+	          	</div>
+	          </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+			<button class="btn btn-success" id="salvar">Salvar</button>
+			<button class="btn btn-danger" id="excluir">Excluir</button>
+			<button class="btn" data-dismiss="modal" id="cancelar">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modalinfo" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Info.</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+          	<div class="col-md-12">
+				<label class="control-label" id="label"></label>
+          	</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+			<button class="btn" data-dismiss="modal">Ok</button>
+			<div id="botoes">
+			</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-------------------------------  fim dos modais ------------------------------->
+
+<div class="container" id="page">
+	<div class="row">
+		<div class="col-md-2 text-right">
+			<label  class="control-label">Nome:</label>
+		</div>
+		<div class="col-md-4">
+			<input id="nomepesquisa" class="form-control"/>
+		</div>
+		<div class="col-md-1">
+			<button type="button" class="btn btn-primary" id="pesquisar" title="Pesquisar uma pessoa pelo nome">Pesquisar</button>
+		</div> 
+		<div class="col-md-1">
+			<button type="button" class="btn btn-primary" id="limpar" title="Limpar a pesquisa feita">Limpar</button>
+		</div>
+		<div class="col-md-1">
+			<button type="button" class="btn btn-lg btn-primary fa fa-refresh" onclick="get()" title="Atualizar tabela"></button>
+		</div>
+	</div>
+	<br>
+	<br>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr class="info">
+				<th width="5%"><button class="btn btn-success fa fa-plus-square" data-toggle="modal" data-target="#myModal" id="inclusao" title="Incluir nova pessoa"></button></th>
+				<th width="5%">Id</th>
+				<th width="30%">Nome</th>
+				<th width="30%">Email</th>
+				<th width="30%">Cidade</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<div class="hidden canto"><button class="btn" data-toggle="modal" data-target="#modalinfo"></button></div>
+</div>
+<script>
+	$(document).ready(function(){
+		get();
+		$('#infoexclusao').hide();
+		$('#cep').mask('99999-999');
+	});
+	
+	$('#limpar').on('click', function(){
+		get();
+		$('#nomepesquisa').val('');
+	});
+
+	$('#pesquisar').on('click', function(){
+		pesquisar();
+	});
+</script>

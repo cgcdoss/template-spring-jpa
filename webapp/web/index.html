@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sistema de Pessoas</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="essencial/jquery-3.2.1.min.js"></script>
+	<link href="essencial/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="essencial/pessoa.css" rel="stylesheet" type="text/css">
+	<script src="essencial/bootstrap.min.js"></script>
+	<script src="essencial/pessoa.js"></script>
+	<script src="essencial/uf.js"></script>
+	<script src="essencial/jquery.mask.min.js"></script>
+	<link rel="stylesheet" href="essencial/font-awesome/css/font-awesome.min.css">
+		<script> 
+	    $(function(){
+	      $("#includedContent").load("head.html"); 
+	    });
+	    $(document).ready(function(){
+	    	$(".buscarPagina").click(function(){
+	    		//Aqui estau retirando o conteudo da propriedade href “o link destino” e colocando em uma variavel
+	    		var link = $(this).attr('href');
+	    		$.ajax
+	    		({
+	    			dataType: 'html',
+	    			url: link, //link da pagina que o ajax buscará
+	    			success: function(data)
+	    			{
+	    				$("#content").html(data).fadeIn(340); //Inserindo o retorno da pagina ajax
+	    			},
+	    			error: function(data){
+	    				$("#content").html("<center><p>ERRO ao carregar outra pagina</p></center>").fadeIn(300); //Em caso de erro ele exibe esta mensagem
+	    			}
+	    		});	
+	    	
+	    	});
+	    });
+	    </script>
+		<script>
+	</script>
+</head>
+<body> <!--style="background-color: #6495ED;"-->
+	
+		<div style="background-color: #696969;">
+			<div class="text-center">
+				<br>
+				<a href="index.html"><button type="button" class="btn btn-primary">Home</button></a>
+				<a onclick="return false;" class="buscarPagina" href="pessoa.html"><button type="button" class="btn btn-primary">Pessoa</button></a>
+				<a onclick="return false;" class="buscarPagina" href="uf.html"><button type="button" class="btn btn-primary">UFs</button></a>
+			</div>	
+			<br>
+		</div>		
+		<br>
+	<div class="container">
+		<div id="content">
+			<div class="text-center">
+				<h1>Bem Vindo!</h1>
+				<p>Sistema de Secretaria Acadêmica</p>
+			</div>
+		</div><!-- /content -->
+	</div>
+</body>
+</html>

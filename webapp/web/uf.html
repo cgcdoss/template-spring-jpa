@@ -1,0 +1,150 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="modal fade" id="myModalUf" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">UF</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row text-right">
+          	<div class="col-md-2">
+          		<label class="control-label">Sigla</label>
+          	</div>
+          	<div class="col-md-2">
+          		<input class="form-control" id="sigla" maxlength="2"/>
+          	</div>
+	       	<div class="col-md-2">
+	       		<label class="control-label">Descrição</label>
+	       	</div>
+	       	<div class="col-md-4">
+	       		<input class="form-control" id="descricao"/>
+	       	</div>
+	       	<div class="col-md-2">
+	       		<input class="form-control" id="id" placeholder="Id" readonly="readonly" tabindex="-1"/>
+	       	</div>
+          </div>
+          <br>
+          <div class="row text-right">
+          	<div class="col-md-2">
+          		<label class="control-label">Região</label>
+          	</div>
+          	<div class="col-md-8">
+          		<select class="form-control" id="regiao">
+          			<option>Norte</option>
+          			<option>Nordeste</option>
+          			<option>Centro-Oeste</option>
+          			<option>Suldeste</option>
+          			<option>Sul</option>
+          		</select>
+          	</div>
+          </div>
+          <br>
+          <div class="row text-right">
+          	<div class="col-md-2">
+          		<label class="control-label">Capital</label>
+          	</div>
+          	<div class="col-md-8">
+          		<input class="form-control" id="capital"/>
+          	</div>
+          </div>
+          <div id="infoExclusaoUf">
+	          <br>
+	          <div class="row text-right">
+	          	<div class="col-md-12 text-right">
+	          		<label>Deseja realmente excluir?</label>
+	          	</div>
+	          </div>
+	          <div class="row text-right">
+	          	<div class="col-md-12 text-right">
+	          		<small class="form-text text-muted">Essa ação não poderá ser desfeita.</small>
+	          	</div>
+	          </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+			<button class="btn btn-success" id="salvarUf">Salvar</button>
+			<button class="btn btn-danger" id="excluirUf">Excluir</button>
+			<button class="btn" data-dismiss="modal" id="cancelar">Cancelar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+ <div class="modal fade" id="modalinfo" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Info.</h4>
+       </div>
+       <div class="modal-body">
+         <div class="row">
+         	<div class="col-md-12">
+			<label class="control-label" id="label"></label>
+         	</div>
+         </div>
+       </div>
+       <div class="modal-footer">
+		<button class="btn" data-dismiss="modal">Ok</button>
+		<div id="botoes">
+		</div>
+       </div>
+     </div>
+   </div>
+ </div>
+  
+<!-------------------------------  fim dos modais ------------------------------->
+
+<div class="container" id="page">
+	<div class="row">
+		<div class="col-md-2 text-right">
+			<label  class="control-label">Descrição:</label>
+		</div>
+		<div class="col-md-4">
+			<input id="descricaopesquisa" class="form-control"/>
+		</div>
+		<div class="col-md-1">
+			<button type="button" class="btn btn-primary" id="pesquisarUf" title="Pesquisar uma pessoa pelo nome">Pesquisar</button>
+		</div> 
+		<div class="col-md-1">
+			<button type="button" class="btn btn-primary" id="limparUf" title="Limpar a pesquisa feita">Limpar</button>
+		</div>
+		<div class="col-md-1">
+			<button type="button" class="btn btn-lg btn-primary fa fa-refresh" onclick="getUFs();" title="Atualizar tabela"></button>
+		</div>
+	</div>
+	<br>
+	<br>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr class="info">
+				<th width="5%"><button class="btn btn-success fa fa-plus-square" data-toggle="modal" data-target="#myModalUf" id="inclusao" title="Incluir nova pessoa"></button></th>
+				<th width="5%">Id</th>
+				<th width="10%">Sigla</th>
+				<th width="20%">Descrição</th>
+				<th width="20%">Região</th>
+				<th width="20%">Capital</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<div class="hidden canto"><button class="btn" data-toggle="modal" data-target="#modalinfo"></button></div>
+</div>
+<script>
+	$(document).ready(function(){
+		getUFs();
+		$('#infoexclusao').hide();
+	});
+	
+	$('#limparUf').on('click', function(){
+		getUFs();
+		$('#nomepesquisa').val('');
+	});
+
+	$('#pesquisarUf').on('click', function(){
+		pesquisarUf();
+	});
+</script>
